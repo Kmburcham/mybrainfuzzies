@@ -134,7 +134,35 @@ c. Before making any reductions to your model, revise the model specification fi
       
 
 ```
+Call:
+lm(formula = log_saleprice ~ I(horsepower^2) + age + enghours + 
+    diesel + fwd + manual + johndeere + cab + spring + summer + 
+    winter, data = tractor_full)
 
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.81301 -0.34593  0.02571  0.33309  1.13072 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      9.132e+00  1.291e-01  70.749  < 2e-16 ***
+I(horsepower^2)  6.635e-06  9.271e-07   7.156 8.20e-12 ***
+age             -2.979e-02  4.266e-03  -6.984 2.32e-11 ***
+enghours        -2.309e-05  1.124e-05  -2.054 0.041005 *  
+diesel           3.732e-01  1.157e-01   3.224 0.001421 ** 
+fwd              2.881e-01  6.983e-02   4.125 4.97e-05 ***
+manual          -1.505e-01  7.381e-02  -2.039 0.042438 *  
+johndeere        3.083e-01  8.602e-02   3.584 0.000402 ***
+cab              8.768e-01  7.027e-02  12.476  < 2e-16 ***
+spring          -7.633e-02  7.724e-02  -0.988 0.323963    
+summer          -1.952e-01  7.583e-02  -2.575 0.010575 *  
+winter          -1.677e-01  8.488e-02  -1.976 0.049186 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4739 on 264 degrees of freedom
+Multiple R-squared:  0.7128,	Adjusted R-squared:  0.7009 
+F-statistic: 59.57 on 11 and 264 DF,  p-value: < 2.2e-16
 ```
 
 
@@ -176,45 +204,9 @@ Use the coefficients and t-statistics from the regression output for this model 
 		no large change in the other coefficients.
 
 ```
-# Estimate a regression model.
-> lm_model_2 <- lm(data = tractor_full,
-+                  formula = log_saleprice ~ I(horsepower^2) + age + enghours +
-+                    diesel + fwd + manual + johndeere +
-+                    cab +
-+                    spring + summer + winter)
-> 
-> # Output the results to screen.
-> summary(lm_model_2)
 
-Call:
-lm(formula = log_saleprice ~ I(horsepower^2) + age + enghours + 
-    diesel + fwd + manual + johndeere + cab + spring + summer + 
-    winter, data = tractor_full)
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--1.81301 -0.34593  0.02571  0.33309  1.13072 
 
-Coefficients:
-                  Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      9.132e+00  1.291e-01  70.749  < 2e-16 ***
-I(horsepower^2)  6.635e-06  9.271e-07   7.156 8.20e-12 ***
-age             -2.979e-02  4.266e-03  -6.984 2.32e-11 ***
-enghours        -2.309e-05  1.124e-05  -2.054 0.041005 *  
-diesel           3.732e-01  1.157e-01   3.224 0.001421 ** 
-fwd              2.881e-01  6.983e-02   4.125 4.97e-05 ***
-manual          -1.505e-01  7.381e-02  -2.039 0.042438 *  
-johndeere        3.083e-01  8.602e-02   3.584 0.000402 ***
-cab              8.768e-01  7.027e-02  12.476  < 2e-16 ***
-spring          -7.633e-02  7.724e-02  -0.988 0.323963    
-summer          -1.952e-01  7.583e-02  -2.575 0.010575 *  
-winter          -1.677e-01  8.488e-02  -1.976 0.049186 *  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 0.4739 on 264 degrees of freedom
-Multiple R-squared:  0.7128,	Adjusted R-squared:  0.7009 
-F-statistic: 59.57 on 11 and 264 DF,  p-value: < 2.2e-16
 
 
 
