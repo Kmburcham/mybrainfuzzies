@@ -204,7 +204,18 @@ Use the coefficients and t-statistics from the regression output for this model 
 		no large change in the other coefficients.
 
 ```
+Log sales & Horsepower- not squared
+Multiple R-squared:  0.7609,	Adjusted R-squared:  0.751 
+F-statistic:  76.4 on 11 and 264 DF,  p-value: < 2.2e-16
 
+Log Sales & Horsepower- squared
+Multiple R-squared:  0.7128,	Adjusted R-squared:  0.7009 
+F-statistic: 59.57 on 11 and 264 DF,  p-value: < 2.2e-16
+
+I would suggest picking the log form horsepower regression as the best fit in the 
+assignment thus far. Adding that horsepower squared decreased the adjusted r squared from 0.75 (without square)
+to 0.70 (squared). P value stayed the same for both regressions. The regression without
+horsepower squared also has a higher f-statistic, which is more valued. 
 
 
 
