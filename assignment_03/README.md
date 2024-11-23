@@ -185,11 +185,10 @@ accurate representation of how Horsepower and Fuel interact with price.
 That is, are the t-statistics higher than 1.96, with the same sign as you hypothesized?
 
 ```
+horsepower          1.125e-02  1.069e-03  10.533  < 2e-16 ***
+squared_horsepower -1.569e-05  2.258e-06  -6.948 2.92e-11 ***
 
-Enter your response here.
-Use the coefficients and t-statistics from the regression output for this model to draw your conclusions.
-
-
+Here, you take the absolute value of each variable: 10.533 and 69.48 are both statistically significant. 
 
 ```
 
