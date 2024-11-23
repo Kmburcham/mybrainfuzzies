@@ -120,8 +120,6 @@ planting and not harvesting seasons in which a tractor would not be used as much
 price of a tractor is each unit is increased by its estimate. 
 
 
-
-
 ```
 
 
@@ -135,34 +133,35 @@ c. Before making any reductions to your model, revise the model specification fi
 
 ```
 Call:
-lm(formula = log_saleprice ~ I(horsepower^2) + age + enghours + 
-    diesel + fwd + manual + johndeere + cab + spring + summer + 
-    winter, data = tractor_full)
+lm(formula = log_saleprice ~ horsepower + squared_horsepower + 
+    age + enghours + diesel + fwd + manual + johndeere + cab + 
+    spring + summer + winter, data = tractor_full)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--1.81301 -0.34593  0.02571  0.33309  1.13072 
+-1.70032 -0.23458  0.05526  0.29542  0.74373 
 
 Coefficients:
-                  Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      9.132e+00  1.291e-01  70.749  < 2e-16 ***
-I(horsepower^2)  6.635e-06  9.271e-07   7.156 8.20e-12 ***
-age             -2.979e-02  4.266e-03  -6.984 2.32e-11 ***
-enghours        -2.309e-05  1.124e-05  -2.054 0.041005 *  
-diesel           3.732e-01  1.157e-01   3.224 0.001421 ** 
-fwd              2.881e-01  6.983e-02   4.125 4.97e-05 ***
-manual          -1.505e-01  7.381e-02  -2.039 0.042438 *  
-johndeere        3.083e-01  8.602e-02   3.584 0.000402 ***
-cab              8.768e-01  7.027e-02  12.476  < 2e-16 ***
-spring          -7.633e-02  7.724e-02  -0.988 0.323963    
-summer          -1.952e-01  7.583e-02  -2.575 0.010575 *  
-winter          -1.677e-01  8.488e-02  -1.976 0.049186 *  
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         8.862e+00  1.114e-01  79.527  < 2e-16 ***
+horsepower          1.125e-02  1.069e-03  10.533  < 2e-16 ***
+squared_horsepower -1.569e-05  2.258e-06  -6.948 2.92e-11 ***
+age                -3.205e-02  3.591e-03  -8.926  < 2e-16 ***
+enghours           -4.089e-05  9.596e-06  -4.261 2.84e-05 ***
+diesel              2.132e-01  9.842e-02   2.166  0.03121 *  
+fwd                 2.761e-01  5.869e-02   4.704 4.12e-06 ***
+manual             -1.534e-01  6.202e-02  -2.474  0.01400 *  
+johndeere           3.100e-01  7.228e-02   4.289 2.52e-05 ***
+cab                 4.762e-01  7.023e-02   6.781 7.85e-11 ***
+spring             -1.115e-01  6.498e-02  -1.716  0.08741 .  
+summer             -1.972e-01  6.372e-02  -3.095  0.00218 ** 
+winter             -1.774e-01  7.132e-02  -2.487  0.01351 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.4739 on 264 degrees of freedom
-Multiple R-squared:  0.7128,	Adjusted R-squared:  0.7009 
-F-statistic: 59.57 on 11 and 264 DF,  p-value: < 2.2e-16
+Residual standard error: 0.3982 on 263 degrees of freedom
+Multiple R-squared:  0.798,	Adjusted R-squared:  0.7888 
+F-statistic: 86.59 on 12 and 263 DF,  p-value: < 2.2e-16
 ```
 
 
@@ -177,8 +176,8 @@ that an increase of horsepower would increase the value of a tractor for being a
 handle more workload. It never occured to me that at some point too much horsepower is not
 essential and could just cost a worker more in fuel. Squaring a value cannot mathmatically make it
 have a negative impact, so squaring the variable would make it more signigicant, lowering the p value
-even more. 
-
+even more. It should increase the adjusted r squared because it will be a more 
+accurate representation of how Horsepower and Fuel interact with price.
 
 ```
 
@@ -209,17 +208,13 @@ Multiple R-squared:  0.7609,	Adjusted R-squared:  0.751
 F-statistic:  76.4 on 11 and 264 DF,  p-value: < 2.2e-16
 
 Log Sales & Horsepower- squared
-Multiple R-squared:  0.7128,	Adjusted R-squared:  0.7009 
-F-statistic: 59.57 on 11 and 264 DF,  p-value: < 2.2e-16
+Multiple R-squared:  0.798,	Adjusted R-squared:  0.7888 
+F-statistic: 86.59 on 12 and 263 DF,  p-value: < 2.2e-16
 
-I would suggest picking the log form horsepower regression as the best fit in the 
-assignment thus far. Adding that horsepower squared decreased the adjusted r squared from 0.75 (without square)
-to 0.70 (squared). P value stayed the same for both regressions. The regression without
+I would suggest picking the log form horsepower squared regression as the best fit in the 
+assignment thus far. Adding that horsepower squared increased the adjusted r squared from 0.751 (without square)
+to 0.7888 (squared). P value stayed the same for both regressions. The regression with
 horsepower squared also has a higher f-statistic, which is more valued. 
-
-
-
-
 
 ```
 
@@ -230,9 +225,73 @@ d. Again, use the best model that results from the answer to the previous questi
 	Is there evidence that tractor prices follow a seasonal pattern? 
 
 ```
-Enter your response here.
-Use the coefficients from the regression output for this model to draw your conclusions.
+Call:
+lm(formula = log_saleprice ~ horsepower + squared_horsepower + 
+    age + enghours + diesel + fwd + manual + johndeere + cab, 
+    data = tractor_full)
 
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.77600 -0.22279  0.04383  0.25746  0.78445 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         8.751e+00  1.078e-01  81.177  < 2e-16 ***
+horsepower          1.121e-02  1.085e-03  10.335  < 2e-16 ***
+squared_horsepower -1.586e-05  2.293e-06  -6.914 3.49e-11 ***
+age                -3.159e-02  3.640e-03  -8.678 4.11e-16 ***
+enghours           -4.035e-05  9.730e-06  -4.147 4.53e-05 ***
+diesel              2.186e-01  9.970e-02   2.193   0.0292 *  
+fwd                 2.809e-01  5.918e-02   4.746 3.38e-06 ***
+manual             -1.606e-01  6.293e-02  -2.552   0.0113 *  
+johndeere           3.121e-01  7.307e-02   4.272 2.70e-05 ***
+cab                 4.857e-01  7.121e-02   6.820 6.09e-11 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4048 on 266 degrees of freedom
+Multiple R-squared:  0.7888,	Adjusted R-squared:  0.7817 
+F-statistic: 110.4 on 9 and 266 DF,  p-value: < 2.2e-16.
+
+In this model you can see that there was a decrease in r square and adjusted r square.
+Though this regression is removing negatively correlated variables, they are still
+statisically signifanct to estimating tractor price. If you were to remove the season that is not 
+significant to the model, you would get this regression output, which has removed "spring".
+
+Call:
+lm(formula = log_saleprice ~ horsepower + squared_horsepower + 
+    age + enghours + diesel + fwd + manual + johndeere + cab + 
+    summer + winter, data = tractor_full)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.6958 -0.2222  0.0490  0.2501  0.7485 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         8.833e+00  1.106e-01  79.892  < 2e-16 ***
+horsepower          1.116e-02  1.071e-03  10.420  < 2e-16 ***
+squared_horsepower -1.560e-05  2.266e-06  -6.886 4.18e-11 ***
+age                -3.195e-02  3.603e-03  -8.867  < 2e-16 ***
+enghours           -4.094e-05  9.631e-06  -4.251 2.96e-05 ***
+diesel              2.127e-01  9.878e-02   2.154  0.03218 *  
+fwd                 2.701e-01  5.880e-02   4.594 6.73e-06 ***
+manual             -1.564e-01  6.223e-02  -2.513  0.01258 *  
+johndeere           3.079e-01  7.253e-02   4.245 3.03e-05 ***
+cab                 4.762e-01  7.049e-02   6.755 9.07e-11 ***
+summer             -1.560e-01  5.923e-02  -2.633  0.00895 ** 
+winter             -1.360e-01  6.737e-02  -2.019  0.04454 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3996 on 264 degrees of freedom
+Multiple R-squared:  0.7958,	Adjusted R-squared:  0.7872 
+F-statistic: 93.51 on 11 and 264 DF,  p-value: < 2.2e-16
+
+This regression shows a slightly higher fit than removing the seasons entirely but 
+it is slightly lower than the adjusted r squared in the original log regression with squared
+horsepower which was .7888. From this, we can gather that tractor prices do follow season changes.
+More tractor-useful seasons (winter and summer) result in an increase in tractor price. 
 
 
 ```
@@ -245,9 +304,36 @@ e. Finally, consider another modification to your model.
 	You can test this by including an interaction with ```enghours:johndeere``` in the regression.
 	
 ```
-Enter your regression results here.
+Call:
+lm(formula = log_saleprice ~ horsepower + squared_horsepower + 
+    age + enghours + enghours:johndeere + diesel + fwd + manual + 
+    johndeere + cab + summer + winter, data = tractor_full)
 
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.69838 -0.22052  0.05042  0.24852  0.75596 
 
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         8.834e+00  1.109e-01  79.682  < 2e-16 ***
+horsepower          1.115e-02  1.074e-03  10.382  < 2e-16 ***
+squared_horsepower -1.557e-05  2.277e-06  -6.840 5.53e-11 ***
+age                -3.196e-02  3.611e-03  -8.852  < 2e-16 ***
+enghours           -4.147e-05  1.021e-05  -4.062 6.44e-05 ***
+diesel              2.140e-01  9.928e-02   2.155  0.03204 *  
+fwd                 2.698e-01  5.895e-02   4.576 7.30e-06 ***
+manual             -1.558e-01  6.246e-02  -2.494  0.01325 *  
+johndeere           2.950e-01  1.087e-01   2.715  0.00706 ** 
+cab                 4.769e-01  7.075e-02   6.740 9.99e-11 ***
+summer             -1.568e-01  5.959e-02  -2.632  0.00899 ** 
+winter             -1.356e-01  6.754e-02  -2.008  0.04567 *  
+enghours:johndeere  3.292e-06  2.070e-05   0.159  0.87377    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4004 on 263 degrees of freedom
+Multiple R-squared:  0.7958,	Adjusted R-squared:  0.7865 
+F-statistic:  85.4 on 12 and 263 DF,  p-value: < 2.2e-16
 
 ```
 
@@ -255,11 +341,11 @@ Test the hypothesis, at the 5 percent level of significance, that the slope for 
 
 Does an additional hour of use affect the price of a John Deere tractor
 differently than tractors of other brands?
-	
+
 ```
-Enter your response here.
-
-
+The p value for enghours:johndeere is higher at 0.87377 (not statistically significant)	
+	Testing the p value 0.050 > then we fail to reject the null hypothesis meaning there is not a increase 
+	or decrease in price of a tractor, john deere or non-john deere with any additional hours of engine usage.
 
 ```
 	
