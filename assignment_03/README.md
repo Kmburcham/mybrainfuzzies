@@ -345,6 +345,7 @@ differently than tractors of other brands?
 The p value for enghours:johndeere is higher at 0.87377 (not statistically significant)	
 	Testing the p value 0.050 > then we fail to reject the null hypothesis meaning there is not a increase 
 	or decrease in price of a tractor, john deere or non-john deere with any additional hours of engine usage.
+	The T value at 0.159 is less than 1.96, therefore it is not statistcally significant.
 
 ```
 	
