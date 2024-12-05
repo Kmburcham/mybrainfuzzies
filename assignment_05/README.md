@@ -27,7 +27,10 @@ a) Verify that damage occurs in both the samples.
 	
 ```
 
-Copy your results here.
+
+      0   1
+  0 120   0
+  1  66  14
 
 
 ```
@@ -38,7 +41,30 @@ b) Copy and paste the table of selected models and R-squared values,
 	
 ```
 
-Copy your results here.
+1         1            damage    0.6540606     0.5927690
+2         2          accident    0.7192817     0.6705927
+3         3         mileage_2    0.7512055     0.7255170
+4         4       rainfall_16    0.7563538     0.7193316
+5         5        rainfall_1    0.7582207     0.7185279
+6         6        rainfall_3    0.7605394     0.7229938
+7         7       rainfall_19    0.7631756     0.7176937
+8         8        rainfall_6    0.7648780     0.7217033
+9         9        rainfall_2    0.7652574     0.7218462
+10       10        rainfall_4    0.7655409     0.7178666
+11       11       rainfall_20    0.7652175     0.7187272
+12       12        rainfall_5    0.7641380     0.7149645
+13       13         mileage_1    0.7626194     0.7194065
+14       14       rainfall_12    0.7610721     0.7113630
+15       15       rainfall_10    0.7591658     0.7145344
+16       16        rainfall_8    0.7573122     0.7190220
+17       17       rainfall_15    0.7552919     0.7169288
+18       18       rainfall_13    0.7530070     0.7186321
+19       19       rainfall_17    0.7505841     0.7173015
+20       20       rainfall_11    0.7479741     0.7184810
+21       21       rainfall_18    0.7453325     0.7190352
+22       22        rainfall_7    0.7425663     0.7188212
+23       23       rainfall_14    0.7396917     0.7187062
+24       24        rainfall_9    0.7367427     0.7186349
 
 
 ```
@@ -52,9 +78,12 @@ c) Compare the models according to the in-sample ```R-bar-squared```
 
 ```
 
-Type your response here.
+In the in-sample set, the best data set is line 10 rainfall_4    0.7655409 because 
+it has the highest r squared. It contains the 9 variables above the line.
 
-
+The best model with 10 variables is "
+[1] "car_price ~  damage + accident + mileage_2 + rainfall_16 + rainfall_1 + rainfall_3 + rainfall_19 + rainfall_6 + rainfall_2 + rainfall_4"
+[1] "with an R-squared of 0.765541.
 ```
 		
 d) Compare the models according to the out-of-sample ```R-bar-squared``` 
@@ -65,7 +94,11 @@ d) Compare the models according to the out-of-sample ```R-bar-squared```
 
 ```
 
-Type your response here.
+In the out-sample data set, line 6  rainfall_3 0.7229938 is the best model. 
+It contains the line and the 5 variables above line 6. 
+
+[1]car_price ~ damage + accident + mileage_2 + rainfall_16 + rainfall_1 + 
+[1]    rainfall_3 "with an R-squared of 0.7229939.
 
 
 ```
@@ -79,7 +112,18 @@ e) Compare the differences between the two models.
 
 ```
 
-Type your response here.
+          7       rainfall_19    0.7631756     0.7176937
+8         8        rainfall_6    0.7648780     0.7217033
+9         9        rainfall_2    0.7652574     0.7218462
+
+These variables would not be present in the out-sample model. This is the difference in 
+variables between in and out sample. This would suggest that more sourced variables
+are able to be included and fit the model. When out-data is applied to this model, less variables
+become significant in terms of high adjusted r squared. Per my chart, I would suggest using the 
+out-sample data set because the adjusted r squared for the variables is not that much less significant
+than in-sample data. Damage, accident, and mileage are more indicators of which variables is a better
+fit, even though they are not that much different. I would recommend using the in-sample data if there was
+more variation in the out-sampling r-squared as the regression model would not be as strong.
 
 
 ```
