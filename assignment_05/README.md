@@ -111,10 +111,13 @@ e) Compare the differences between the two models.
 
 
 ```
+These variables would not be present in the out-sampling data regression model compared to the
+in-sampling data set. 
 
-          7       rainfall_19    0.7631756     0.7176937
+7         7        rainfall_19   0.7631756     0.7176937
 8         8        rainfall_6    0.7648780     0.7217033
 9         9        rainfall_2    0.7652574     0.7218462
+10       10        rainfall_4    0.7655409     0.7178666
 
 These variables would not be present in the out-sample model. This is the difference in 
 variables between in and out sample. This would suggest that more sourced variables
