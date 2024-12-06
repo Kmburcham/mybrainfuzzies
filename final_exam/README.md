@@ -16,7 +16,7 @@ a) Read in the ```airplane_sales.csv``` dataset and store it in a data frame cal
 
 ```
 
-Enter the required code here.
+airplane_sales <- read_csv("~/GitHub/mybrainfuzzies/final_exam/airplane_sales.csv")
 
 ```
 
@@ -26,7 +26,18 @@ Use this to get familiar with the contents of the dataset.
 
 ```
 
-Copy your results here.
+airplane_sales <- read.csv('airplane_sales.csv')
+
+# Inspect the contents.
+summary(airplane_sales)
+
+X0Sale_ID          age            price       
+ Min.   :101.0   Min.   :13.00   Min.   :  9000  
+ 1st Qu.:149.5   1st Qu.:19.00   1st Qu.: 19250  
+ Median :198.0   Median :22.00   Median : 33500  
+ Mean   :198.0   Mean   :24.61   Mean   : 50237  
+ 3rd Qu.:246.5   3rd Qu.:30.00   3rd Qu.: 73500  
+ Max.   :295.0   Max.   :44.00   Max.   :254000  
 
 
 ```
@@ -36,9 +47,29 @@ Copy the printed estimation output from the ```summary``` command.
 
 
 ```
+lm_model_1 <- lm(data = airplane_sales,
+                 formula = price ~ age + X0Sale_ID) 
 
-Copy your results here.
+summary(lm_model_1)
 
+Call:
+lm(formula = price ~ age + X0Sale_ID, data = airplane_sales)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-36273 -11306  -4024   8330 179397 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 22805.85   11142.46   2.047    0.042 *  
+age         -2332.28     266.00  -8.768 9.68e-16 ***
+X0Sale_ID     428.43      32.77  13.073  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 23270 on 192 degrees of freedom
+Multiple R-squared:  0.6883,	Adjusted R-squared:  0.6851 
+F-statistic:   212 on 2 and 192 DF,  p-value: < 2.2e-16
 
 ```
 
@@ -51,7 +82,9 @@ in a data frame called ```airplane_specs``` in your workspace.
 
 ```
 
-Enter the required code here.
+library(readr)
+airplane_specs <- read_csv("airplane_specs.csv")
+View(airplane_specs)
 
 ```
 
@@ -63,8 +96,12 @@ Store the new dataset in a data frame called
 
 
 ```
+# Join the two datasets.
 
-Enter the required code here.
+airplane_sales_specs <- merge(x = airplane_sales, y = airplane_specs)
+
+# Verify that the data were joined correctly.
+summary(airplane_sales_specs)
 
 ```
 
@@ -75,7 +112,20 @@ Use this to get familiar with the contents of the dataset.
 
 ```
 
-Copy your results here.
+X0Sale_ID        age            price           0Sale_ID        pass      
+ Min.   :101   Min.   :13.00   Min.   :  9000   Min.   :101   Min.   :2.000  
+ 1st Qu.:149   1st Qu.:19.00   1st Qu.: 19000   1st Qu.:149   1st Qu.:4.000  
+ Median :198   Median :22.00   Median : 33500   Median :198   Median :4.000  
+ Mean   :198   Mean   :24.61   Mean   : 50237   Mean   :198   Mean   :4.287  
+ 3rd Qu.:247   3rd Qu.:30.00   3rd Qu.: 74000   3rd Qu.:247   3rd Qu.:6.000  
+ Max.   :295   Max.   :44.00   Max.   :254000   Max.   :295   Max.   :6.000  
+      wtop           fixgear           tdrag        
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.00000  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000  
+ Median :0.0000   Median :0.0000   Median :0.00000  
+ Mean   :0.4615   Mean   :0.4513   Mean   :0.05641  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.00000  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.00000  
 
 
 ```
