@@ -450,10 +450,10 @@ Multiple R-squared:  0.9431,	Adjusted R-squared:  0.9407
 F-statistic: 385.5 on 8 and 186 DF,  p-value: < 2.2e-16
 
 In the first model the wtop characteristics was removed .048649   0.031384  -1.550 0.122823  
-The T-statistic was not statisitcally significant. The adjusted r squared decreased and the 
-remaining variables did decrease but not by a significant amount. With removing this variable, the
+The T-statistic was not statisitcally significant. The adjusted r squared decreased. With removing this variable, the
 adjusted r-squared decreased from 0.9411 to 0.9407, though not significant amount of decrease, 
-it should be left in the model. 
+it should be left in the model. There was also a larger change in variables when removing wtop potentially
+suggesting multicollinearity. 
 
 Removing wtop and reducing the adjusted r squared to a lower value than the previous model does not
 make the model bad. It is a more simplified version that is not victim to overfitting and wtop could be
@@ -498,7 +498,7 @@ This model takes out all statistically insignificant variables from the original
 These variables both had T-scores that were not signigicant to 1.96 in either direction. The p-values also
 were not testing significant. The adjusted r-squared did not signigicantly change suggesting that the 
 variables in no way add to the correlation of the regression. These varaibles did not over adjust the r-sqaured
-value but added more clutter. 
+value but added more clutter. The remaining variables did not change significantly from the original run.
 
 
 
@@ -603,20 +603,23 @@ f) Finally, for each of the variables in the datasets,
 
 
 ```
+All of these variables are taken from the second regression where both insignificant variable are removed. I think 
+my third regression was more for fun...and not the requirement. 
+
 
 Positively related:
-pass         0.04793    0.02155   2.224   0.0273 
-log_horse    1.02080    0.13511   7.555 1.83e-12 ***
-log_fuel     0.16775    0.08397   1.998   0.0472 *  
-log_cruise   1.08384    0.19053   5.689 4.90e-08 ***
+pass         0.05188    0.02149   2.414   0.0167 * 
+log_horse    0.98598    0.13384   7.367 5.44e-12 ***
+log_fuel     0.17238    0.08426   2.046   0.0422 *  
+log_cruise   1.04191    0.18944   5.500 1.24e-07 ***
 
 Increase of horsepower, fuel, and the ability to cruise at higher speeds increases with the 
 price of an airplane. 
 
 Negatively related:
-log_age     -1.52798    0.06334 -24.122  < 2e-16 ***
-fixgear     -0.18054    0.07073  -2.553   0.0115 *  
-tdrag       -0.46085    0.07549  -6.105 5.87e-09 ***
+log_age     -1.52942    0.06359 -24.051  < 2e-16 ***
+fixgear     -0.14417    0.06717  -2.147   0.0331 *  
+tdrag       -0.46649    0.07571  -6.161 4.32e-09 ***
 
 A decrease in age, if a plane has fixed landing gear, wings above the fuselage, and if there are wheels on the tail
 are inversely related to the price of an airplane. One would assume that having landing gear is sufficient enough and a fixed
